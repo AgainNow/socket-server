@@ -1,11 +1,11 @@
-#include "SimpleServer.h"
+#include "IterativeServer.h"
 
 #include <iostream>
 #include <sys/socket.h>
 #include <unistd.h>
 #include <arpa/inet.h>
 
-void SimpleServer::udp(const char* ip_addr, uint16_t port) {
+void IterativeServer::udp(const char* ip_addr, uint16_t port) {
     std::cout << __FUNCTION__ << "ing..." << std::endl;
     int sd = socket(PF_INET, SOCK_DGRAM, 0);
     
@@ -29,7 +29,7 @@ void SimpleServer::udp(const char* ip_addr, uint16_t port) {
     close(sd);
 }
 
-void SimpleServer::tcp(const char* ip_addr, uint16_t port) {
+void IterativeServer::tcp(const char* ip_addr, uint16_t port) {
     std::cout << __FUNCTION__ << "ing..." << std::endl;
     // 创建socket
     int sd = socket(PF_INET, SOCK_STREAM, 0);
@@ -39,9 +39,9 @@ void SimpleServer::tcp(const char* ip_addr, uint16_t port) {
     }
     // 绑定本地端点地址
     struct sockaddr_in servaddr;
-    servaddr.sin_addr.s_addr = INADDR_ANY;
+    servaddr.sin_addr.s_addr = INADDR_ANY;  // 监听所有地址信息？？？
     servaddr.sin_family = PF_INET;
-    servaddr.sin_port = htons(1314);
+    servaddr.sin_port = htons(port);
     int servaddr_len = sizeof(servaddr);
     int res = bind(sd, (struct sockaddr*)&servaddr, servaddr_len);
     if (res != 0) {

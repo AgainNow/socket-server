@@ -17,3 +17,5 @@ file(GLOB SRC_FILES "src/*.cpp")
 
 # 可执行文件编译
 add_executable(${PROJECT_NAME} main.cpp ${SRC_FILES})
+
+target_link_libraries(${PROJECT_NAME} pthread)
