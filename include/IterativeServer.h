@@ -1,4 +1,4 @@
-// 基于系统调用的简单socket服务端
+// 基于系统调用的循环socket服务端
 #include <cstdint>
 
 class IterativeServer {
