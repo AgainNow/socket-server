@@ -9,13 +9,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # 库编译
 
+# 查找头文件路径
+find_package(boost REQUIRED)
+
 # 引入头文件目录
 include_directories(include)
+include_directories(/usr/local/include)
 
 # 引入源文件
 file(GLOB SRC_FILES "src/*.cpp")
 
 # 可执行文件编译
-add_executable(${PROJECT_NAME} main.cpp ${SRC_FILES})
+add_executable(${PROJECT_NAME} src/main.cpp ${SRC_FILES})
 
-target_link_libraries(${PROJECT_NAME} pthread)
+target_link_libraries(${PROJECT_NAME} ${boost_LIBRARES} pthread)

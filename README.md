@@ -22,3 +22,5 @@ socket服务端开发模板，基于系统调用、muduo等。
     - Proactor Server 异步I/O模型
     - Thread Pool Server 多线程池模型
     - 混合架构（如muduo的多Reactor多线程）
+- 网络I/O模型
+    - one loop per thread
