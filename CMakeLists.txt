@@ -9,12 +9,21 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # 库编译
 
-# 查找头文件路径
-find_package(boost REQUIRED)
-
 # 引入头文件目录
 include_directories(include)
-include_directories(/usr/local/include)
+
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    include_directories(/usr/include)
+elseif(CMAKE_SYSTEM_NAME STREQUAL "MacOS")
+    include_directories(/usr/local/include)
+endif()
+
+# 查找头文件路径
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    find_package(Boost REQUIRED)  # mac用boost；linux用Boost
+elseif(CMAKE_SYSTEM_NAME STREQUAL "MacOS")
+    find_package(boost REQUIRED)  # mac用boost；linux用Boost
+endif()
 
 # 引入源文件
 file(GLOB SRC_FILES "src/*.cpp")

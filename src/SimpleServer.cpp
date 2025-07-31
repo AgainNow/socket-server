@@ -4,6 +4,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 #include <arpa/inet.h>
+#include <cstring>
 
 void SimpleServer::udp(const char* ip_addr, uint16_t port) {
     std::cout << __FUNCTION__ << "ing..." << std::endl;

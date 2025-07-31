@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <thread>
+#include <cstring>
 
 void ConcurrentServer::udp_handle(int sd, char* request, int len, sockaddr* cliaddr, socklen_t cliaddr_len) {
     printf("Request: %.*s\n", len, request);
